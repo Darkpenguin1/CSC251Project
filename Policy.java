@@ -1,5 +1,5 @@
 Public Policy{
-   private int policyNum;
+   private int policyNum;                    // init all neccesary fields
    private String providerName;
    private String policyHolderFirstName;
    private String policyHolderLastName;
@@ -8,7 +8,7 @@ Public Policy{
    private double policyHolderHeight;
    private double policyHolderWeight;
    
-   Policy(){
+   Policy(){                        // init no arg constructor to init all fields to a default val
       policyNum = -1;
       providerName = "default";
       policyHolderFirstName = "default";
@@ -19,7 +19,7 @@ Public Policy{
       policyHolderWeight = -1; 
    }
    
-   Policy(int pNum, String provName, String phFirstName, String phLastName, int phAge, String phSmokingStatus, double phHeight, double phWeight){
+   Policy(int pNum, String provName, String phFirstName, String phLastName, int phAge, String phSmokingStatus, double phHeight, double phWeight){        // init an arg constructor
       policyNum = pNum;
       providerName = provName;
       policyHolderFirstName = phFirstName;
@@ -30,7 +30,7 @@ Public Policy{
       policyHolderWeight = phWeight;
    }
    
-   public void setPolicyNum(int pNum){
+   public void setPolicyNum(int pNum){          // init all mutator methods 
       policyNum = pNum;
    }
    
@@ -58,7 +58,7 @@ Public Policy{
       policyHolderWeight = phWeight;
    }
    
-   public int getPolicyNum(){
+   public int getPolicyNum(){    // init all getter methods 
       return policyNum;
    }
    
@@ -90,27 +90,25 @@ Public Policy{
       return policyHolderWeight;
    }
 
-   public double getBMI(){
+   public double getBMI(){       // method that calculates the users BMI and returns it
       return (policyHolderWeight * 703) / (policyHolderHeight * policyHolderHeight);
    }
 
-   public double getInsurancePolicyPrice(){
-      final double baseFee = 600.0;
+   public double getInsurancePolicyPrice(){        // method that returns the users insurance policy price
+      final double baseFee = 600.0;       // inits the base fee to 600, inits the additional fees and totalFee var
       double additionalFees = 0.0;
       double totalFee = baseFee;
       
-      if (policyHolderAge > 50){
+      if (policyHolderAge > 50){       // series of if statements that when the condition is met adds a additional fee
          additionalFees += 75.0;
       }
       if (policyHolderSmokingStatus.equalsIgnoreCase("smoker")){
          additionalFees += 100.0;
       } 
-      if (getBMI() > 35){
+      if (getBMI() > 35){     
          additionalFees += (getBMI() - 35) * 20;
       }
    
-      return totalFee += additionalFees;
+      return totalFee += additionalFees;     // returns the additional fee plus the totalFee 
    }
-
-
 }
