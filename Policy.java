@@ -1,4 +1,4 @@
-Public Policy{
+public class Policy{
    private int policyNum;                    // init all neccesary fields
    private String providerName;
    private String policyHolderFirstName;
