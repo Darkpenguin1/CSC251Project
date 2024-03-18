@@ -34,64 +34,64 @@ public class Policy{
       policyNum = pNum;
    }
    
-   public void setPolicyHolderFirstName(String phFirstName){
+   public void setPolicyHolderFirstName(String phFirstName){   // @param The policy holders first name
       policyHolderFirstName = phFirstName;
    }
    
-   public void setPolicyHolderLastName(String phLastName){
+   public void setPolicyHolderLastName(String phLastName){     // @param The policy holders last name
       policyHolderLastName = phLastName;
    }
    
-   public void setPolicyHolderAge(int phAge){
+   public void setPolicyHolderAge(int phAge){         // @param The policy holders age
       policyHolderAge = phAge;
    }
    
-   public void setPolicyHolderSmokingStatus(String phSmokingStatus){
+   public void setPolicyHolderSmokingStatus(String phSmokingStatus){    // @param The policy holders smoking status
       policyHolderSmokingStatus = phSmokingStatus;
    }
    
-   public void setPolicyHolderHeight(double phHeight){
+   public void setPolicyHolderHeight(double phHeight){      // @param The policy holders height
       policyHolderHeight = phHeight;
    }
    
-   public void setPolicyHolderWeight(double phWeight){
+   public void setPolicyHolderWeight(double phWeight){      // @param The policy holders weight
       policyHolderWeight = phWeight;
    }
    
    public int getPolicyNum(){    // init all getter methods 
-      return policyNum;
+      return policyNum;    // @return The policy holders policy number
    }
    
    public String getProviderName(){
-      return providerName;
+      return providerName; // @return The policy holders provider name
    }
    
    public String getPolicyHolderFirstName(){
-      return policyHolderFirstName;
+      return policyHolderFirstName;       // @return The policy holders first name
    }
    
    public String getPolicyHolderLastName(){
-      return policyHolderLastName;
+      return policyHolderLastName;     // @return The policy holders last name
    }
    
    public int getPolicyHolderAge(){
-      return policyHolderAge;
+      return policyHolderAge;          // @return The policy holders age
    }
    
    public String getPolicyHolderSmokingStatus(){
-      return policyHolderSmokingStatus;
+      return policyHolderSmokingStatus;      // @return The policy holders smoking status
    }
    
    public double getPolicyHolderHeight(){
-      return policyHolderHeight;
+      return policyHolderHeight;          // @return The policy holders height
    }
    
    public double getPolicyHolderWeight(){
-      return policyHolderWeight;
+      return policyHolderWeight;          // @return The policy holders weight
    }
-
-   public double getBMI(){       // method that calculates the users BMI and returns it
-      return (policyHolderWeight * 703) / (policyHolderHeight * policyHolderHeight);
+   
+   public double getBMI(){       // method that calculates the users BMI and returns it         
+      return (policyHolderWeight * 703) / (policyHolderHeight * policyHolderHeight);         // @return The policy holders bmi      
    }
 
    public double getInsurancePolicyPrice(){        // method that returns the users insurance policy price
@@ -109,6 +109,6 @@ public class Policy{
          additionalFees += (getBMI() - 35) * 20;
       }
    
-      return totalFee += additionalFees;     // returns the additional fee plus the totalFee 
+      return totalFee += additionalFees;     // @return The policy holders additional fees plus the totalFee 
    }
 }
