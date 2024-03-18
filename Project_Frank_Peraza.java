@@ -1,53 +1,49 @@
 import java.util.Scanner;
+import java.io.*;
+import java.util.ArrayList;
+
 
 public class Project_Frank_Peraza{
-   public static void main(String[] args){
-      Scanner keyboard = new Scanner(System.in);         // init the scanner class
-            
-      System.out.print("Please enter the Policy Number: ");          // Prompt the user to enter the respective field information, and assign the info to a variable
-      int policyNum = keyboard.nextInt();
-        
-      keyboard.nextLine();
-  
-      System.out.print("\nPlease Enter the Provider Name: ");
-      String providerName = keyboard.nextLine();
-            
-      System.out.print("\nPlease Enter the Policy Holder's First Name: ");
-      String policyHolderFirstName = keyboard.nextLine();
-      
-      System.out.print("\nPlease enter the Policy Holder's Last Name: ");
-      String policyHolderLastName = keyboard.nextLine();
-      
-      System.out.print("\nPlease enter the Policy Holder's Age: ");
-      int policyHolderAge = keyboard.nextInt();
-      
-      keyboard.nextLine();
-      
-      System.out.print("\nPlease enter the Policy Holder's smoking status (smoker/non-smoker): ");
-      String policyHolderSmokingStatus = keyboard.nextLine();
-     
-      System.out.print("\nPlease enter the Policy Holder's height (in inches): ");
-      double policyHolderHeight = keyboard.nextDouble();
-      
-      System.out.print("\nPlease enter the Policy Holder's weight (in pounds): ");
-      double policyHolderWeight = keyboard.nextDouble();
-      
-      // initialize the Policy class with all the arguments with the information the user provided
-      Policy demo = new Policy(policyNum, providerName, policyHolderFirstName, policyHolderLastName, policyHolderAge, policyHolderSmokingStatus, policyHolderHeight, policyHolderWeight);
+   public static void main(String[] args) throws IOException 
+   {
+      File file = new File("DownloadAttachment.txt"); // create the file ref obj
+      Scanner keyboard = new Scanner(file);         // init the scanner class to read in file info
+      ArrayList<Policy> policyList = new ArrayList<Policy>();
       
       
-      // print out the respective information using the policy classes get methods
-      System.out.println("Policy Number: " + demo.getPolicyNum());
-      System.out.println("\nProvider Number: " + demo.getProviderName());
-      System.out.println("\nPolicyholders first name: " + demo.getPolicyHolderFirstName());
-      System.out.println("\nPolicyholders last name: " + demo.getPolicyHolderLastName());
-      System.out.println("\nPolicyholders age: " + demo.getPolicyHolderAge());
-      System.out.println("\nPolicyholders smoking status: " + demo.getPolicyHolderSmokingStatus());
-      System.out.println("\nPolicyholders height: " + demo.getPolicyHolderHeight());
-      System.out.println("\nPolicyholders weight: " + demo.getPolicyHolderWeight());
-      System.out.printf("\nPolicyholders BMI: %.2f\n", + demo.getBMI());
-      System.out.printf("\nPolicy Price: $%.2f\n", + demo.getInsurancePolicyPrice());
-   
-   
+      while (keyboard.hasNextLine()){     // A while loop that runs until there is no more file info
+         int policyNum = keyboard.nextInt();          // Read in the file info into file scanner and assign the info to the variables accordingly
+         keyboard.nextLine();
+         
+         String providerName = keyboard.nextLine();
+         String policyHolderFirstName = keyboard.nextLine();   
+         String policyHolderLastName = keyboard.nextLine();
+         
+         int policyHolderAge = keyboard.nextInt();
+         keyboard.nextLine();
+         
+         String policyHolderSmokingStatus = keyboard.nextLine();   
+         
+         double policyHolderHeight = keyboard.nextDouble();
+         double policyHolderWeight = keyboard.nextDouble();   
+         keyboard.nextLine();    // make sure to consume all the new lines when switching between types
+         
+         // Once we have all of our neccesary info create a policy object and add it into the policyList array
+         policyList.add(new Policy(policyNum, providerName, policyHolderFirstName, policyHolderLastName, policyHolderAge, policyHolderSmokingStatus, policyHolderHeight, policyHolderWeight));
+      
+      }
+      for (int i = 0; i < policyList.size(); i++){    // Print out each respective policy objs attributes
+         System.out.println("\nPolicy Number: " + policyList.get(i).getPolicyNum());
+         System.out.println("\nProvider Name: " + policyList.get(i).getProviderName());
+         System.out.println("\nPolicyholders first name: " + policyList.get(i).getPolicyHolderFirstName());
+         System.out.println("\nPolicyholders last name: " + policyList.get(i).getPolicyHolderLastName());
+         System.out.println("\nPolicyholders age: " + policyList.get(i).getPolicyHolderAge());
+         System.out.println("\nPolicyholders smoking status: " + policyList.get(i).getPolicyHolderSmokingStatus());
+         System.out.println("\nPolicyholders height: " + policyList.get(i).getPolicyHolderHeight());
+         System.out.println("\nPolicyholders weight: " + policyList.get(i).getPolicyHolderWeight());
+         System.out.printf("\nPolicyholders BMI: %.2f\n", + policyList.get(i).getBMI());
+         System.out.printf("\nPolicy Price: $%.2f\n", + policyList.get(i).getInsurancePolicyPrice());
+      }
+      keyboard.close();    // make sure to close the file! 
    }
 }
